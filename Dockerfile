@@ -30,7 +30,7 @@ RUN mv /etc/oneapm-ci-agent/oneapm-ci-agent.conf.example /etc/oneapm-ci-agent/on
 COPY conf.d/docker_daemon.yaml /etc/oneapm-ci-agent/conf.d/docker_daemon.yaml
 
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod+x /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 # Extra conf.d
 CMD mkdir -p /conf.d
 VOLUME ["/conf.d"]

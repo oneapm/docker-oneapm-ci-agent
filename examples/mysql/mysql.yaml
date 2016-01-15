@@ -1,0 +1,12 @@
+init_config:
+
+instances:
+  - server: 172.17.42.1
+    user: oneapm
+    pass: password
+    tags:
+        - "tag_key1:tag_value1"
+        - "tag_key2:tag_value2"
+    options:
+        replication: 0
+        galera_cluster: 1

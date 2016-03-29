@@ -30,10 +30,10 @@ RUN mv /etc/oneapm-ci-agent/oneapm-ci-agent.conf.example /etc/oneapm-ci-agent/on
 COPY conf.d/docker_daemon.yaml /etc/oneapm-ci-agent/conf.d/docker_daemon.yaml
 
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-# Extra conf.d
-CMD mkdir -p /conf.d
+
+# Extra conf.d and checks.d
 VOLUME ["/conf.d"]
+VOLUME ["/checks.d"]
 
 # Expose OneStatsD port
 EXPOSE 8251/udp

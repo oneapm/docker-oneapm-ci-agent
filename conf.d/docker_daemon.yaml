@@ -2,7 +2,7 @@ init_config:
   # Change the root directory to look at to get cgroup statistics. Useful when running inside a
   # container with host directories mounted on a different folder. Default: /.
   # Example for the docker-oneapm-ci-agent container:
-  # docker_root: /host
+  docker_root: /host
 
   # Timeout in seconds for the connection to the docker daemon
   # Default: 5 seconds

@@ -33,7 +33,7 @@ if [[ $PROXY_USER ]]; then
 fi
 
 if [[ $PROXY_PASSWORD ]]; then
-    sed -i -e "s/^# proxy_password:.*$/proxy_password: ${PROXY_USER}/" /etc/oneapm-ci-agent/oneapm-ci-agent.conf
+    sed -i -e "s/^# proxy_password:.*$/proxy_password: ${PROXY_PASSWORD}/" /etc/oneapm-ci-agent/oneapm-ci-agent.conf
 fi
 
 find /conf.d -name '*.yaml' -exec cp {} /etc/oneapm-ci-agent/conf.d \;

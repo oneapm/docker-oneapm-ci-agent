@@ -3,7 +3,7 @@ FROM debian:jessie
 MAINTAINER OneAPM <package@oneapm.com>
 
 ENV DOCKER_ONEAPM_CI_AGENT yes
-ENV AGENT_VERSION 1:4.4.0-1
+ENV AGENT_VERSION 1:4.5.0-1
 
 # Install the Agent
 RUN echo "deb http://apt.oneapm.com/ stable main" > /etc/apt/sources.list.d/oneapm-ci-agent.list \

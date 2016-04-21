@@ -43,20 +43,20 @@ instances:
     # ensure that `docker ps -a -q` run fast before enabling it.
     # Defaults to false.
     #
-    # collect_container_size: false
+    # collect_container_size: true
 
     # Collect images stats
     # Number of available active images and intermediate images as gauges.
     # Defaults to false.
     #
-    # collect_images_stats: false
+    # collect_images_stats: true
 
     # Collect disk usage per image with docker.image.size and docker.image.virtual_size metrics.
     # The check gets this size with the `docker images` command.
     # Requires collect_images_stats to be enabled.
     # Defaults to false.
     #
-    # collect_image_size: false
+    # collect_image_size: true
 
 
     # Exclude containers based on their tags

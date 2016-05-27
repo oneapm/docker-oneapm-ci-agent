@@ -25,7 +25,7 @@ if [[ $MYSQL_PORT ]]; then
 	mysql_user='root'
 	if [[ $MYSQL_ENV_MYSQL_ALLOW_EMPTY_PASSWORD == 'yes' ]];then
 		mysql_pass=''
-  else
+	else
 		mysql_pass=$MYSQL_ENV_MYSQL_ROOT_PASSWORD
 	fi
 

@@ -36,6 +36,8 @@ if [[ $PROXY_PASSWORD ]]; then
     sed -i -e "s/^# proxy_password:.*$/proxy_password: ${PROXY_USER}/" /etc/oneapm-ci-agent/oneapm-ci-agent.conf
 fi
 
+/dummy_support_aliyun_container.sh
+
 find /conf.d -name '*.yaml' -exec cp {} /etc/oneapm-ci-agent/conf.d \;
 
 export PATH="/opt/oneapm-ci-agent/embedded/bin:/opt/oneapm-ci-agent/bin:$PATH"

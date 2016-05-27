@@ -30,6 +30,10 @@ RUN mv /etc/oneapm-ci-agent/oneapm-ci-agent.conf.example /etc/oneapm-ci-agent/on
 COPY conf.d/docker_daemon.yaml /etc/oneapm-ci-agent/conf.d/docker_daemon.yaml
 
 COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+COPY dummy_support_aliyun_container.sh /dummy_support_aliyun_container.sh
+RUN chmod +x /dummy_support_aliyun_container.sh
 
 # Extra conf.d and checks.d
 VOLUME ["/conf.d"]

@@ -87,5 +87,5 @@ if [[ $MEMCACHED_PORT ]];then
 	# host
 	sed -i -e "s/^  - url: localhost/  - url: ${memcached_addr}/" $memcached_config
 	# port
-  sed -i -e "s/^  #   port: 11211/    port: 11211/" $memcached_config
+	sed -i -e "s/^  #   port: 11211/    port: 11211/" $memcached_config
 fi

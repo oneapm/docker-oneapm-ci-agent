@@ -5,4 +5,5 @@
 FROM oneapm/docker-oneapm-ci-agent
 
 # Add MySQL check configuration
-ADD mysql.yaml /etc/oneapm-ci-agent/conf.d/mysql.yaml
+ADD mysql.yaml /etc/cloudinsight-agent/conf.d/mysql.yaml
+

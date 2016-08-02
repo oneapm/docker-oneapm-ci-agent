@@ -8,5 +8,6 @@ FROM oneapm/docker-oneapm-ci-agent
 RUN apt-get install openjdk-7-jre-headless -qq --no-install-recommends
 
 # Add Kafka check configuration
-ADD kafka.yaml /etc/oneapm-ci-agent/conf.d/kafka.yaml
+ADD kafka.yaml /etc/cloudinsight-agent/conf.d/kafka.yaml
+
 

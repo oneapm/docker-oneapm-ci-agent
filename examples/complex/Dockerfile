@@ -4,5 +4,6 @@
 
 FROM oneapm/docker-oneapm-ci-agent
 
-# Add a constom oneapm-ci-agent.conf
-ADD oneapm-ci-agent.conf /etc/oneapm-ci-agent/oneapm-ci-agent.conf
+# Add a constom cloudinsight-agent.conf
+ADD cloudinsight-agent.conf /etc/cloudinsight-agent/cloudinsight-agent.conf
+

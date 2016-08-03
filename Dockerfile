@@ -20,7 +20,7 @@ RUN echo "deb http://apt.oneapm.com/ stable main" > /etc/apt/sources.list.d/clou
 # 5. Remove network check
 RUN mv /etc/cloudinsight-agent/cloudinsight-agent.conf.example /etc/cloudinsight-agent/cloudinsight-agent.conf \
  && sed -i -e"s/^.*log_to_syslog:.*$/log_to_syslog: no/" /etc/cloudinsight-agent/cloudinsight-agent.conf \
- && sed -i "/user=cloudinsight-agent/d" /etc/cloudinsight-agent/supervisor.conf \
+ && sed -i "/user=cloudinsight-agent/d" /etc/cloudinsight-agent/supervisord.conf \
  && sed -i 's/AGENTUSER="cloudinsight-agent"/AGENTUSER="root"/g' /etc/init.d/cloudinsight-agent \
  && chmod +x /etc/init.d/cloudinsight-agent \
  && rm /etc/cloudinsight-agent/conf.d/network.yaml.default
@@ -38,4 +38,4 @@ VOLUME ["/checks.d"]
 EXPOSE 8251/udp
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["supervisord", "-n", "-c", "/etc/cloudinsight-agent/supervisor.conf"]
+CMD ["supervisord", "-n", "-c", "/etc/cloudinsight-agent/supervisord.conf"]

@@ -1,0 +1,40 @@
+FROM centos:6
+
+MAINTAINER Cloudinsight <package@oneapm.com>
+
+ENV AGENT_VERSION 1:4.7.0-1
+
+# Install the Agent
+RUN echo -e '[cloudinsight-agent]\nname = OneAPM, Inc.\nbaseurl = http://yum.oneapm.com/x86_64/\nenabled=1\ngpgcheck=0\npriority=1' \
+    > /etc/yum.repos.d/cloudinsight-agent.repo \
+ && yum -y update; yum clean all \
+ && yum -y install initscripts; yum clean all \
+ && yum -y --disablerepo='*' --enablerepo='cloudinsight-agent' install cloudinsight-agent; yum clean all
+
+# Configure the Agent
+# 1. Turn syslog off
+# 2. Remove cloudinsight-agent user from supervisor configuration
+# 3. Remove cloudinsight-agent user from init.d configuration
+# 4. Fix permission on /etc/init.d/cloudinsight-agent
+# 5. Remove network check
+RUN mv /etc/cloudinsight-agent/cloudinsight-agent.conf.example /etc/cloudinsight-agent/cloudinsight-agent.conf \
+ && sed -i -e"s/^.*log_to_syslog:.*$/log_to_syslog: no/" /etc/cloudinsight-agent/cloudinsight-agent.conf \
+ && sed -i "/user=cloudinsight-agent/d" /etc/cloudinsight-agent/supervisord.conf \
+ && sed -i 's/AGENTUSER="cloudinsight-agent"/AGENTUSER="root"/g' /etc/init.d/cloudinsight-agent \
+ && chmod +x /etc/init.d/cloudinsight-agent \
+ && rm /etc/cloudinsight-agent/conf.d/network.yaml.default
+
+# Add Docker check
+COPY conf.d/docker_daemon.yaml /etc/cloudinsight-agent/conf.d/docker_daemon.yaml
+
+COPY entrypoint.sh /entrypoint.sh
+
+# Extra conf.d and checks.d
+VOLUME ["/conf.d"]
+VOLUME ["/checks.d"]
+
+# Expose StatsD port
+EXPOSE 8251/udp
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["supervisord", "-n", "-c", "/etc/cloudinsight-agent/supervisord.conf"]

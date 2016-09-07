@@ -2,7 +2,7 @@ FROM debian:jessie
 
 MAINTAINER Cloudinsight <package@oneapm.com>
 
-ENV AGENT_VERSION 1:4.7.0-1
+ENV AGENT_VERSION 1:4.7.1-1
 
 # Install the Agent
 RUN echo "deb http://apt.oneapm.com/ stable main" > /etc/apt/sources.list.d/cloudinsight-agent.list \

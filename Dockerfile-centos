@@ -2,7 +2,7 @@ FROM centos:6
 
 MAINTAINER Cloudinsight <package@oneapm.com>
 
-ENV AGENT_VERSION 1:4.7.0-1
+ENV AGENT_VERSION 1:4.7.1-1
 
 # Install the Agent
 RUN echo -e '[cloudinsight-agent]\nname = OneAPM, Inc.\nbaseurl = http://yum.oneapm.com/x86_64/\nenabled=1\ngpgcheck=0\npriority=1' \

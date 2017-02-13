@@ -9,6 +9,7 @@ RUN echo "deb http://apt.oneapm.com/ stable main" > /etc/apt/sources.list.d/clou
  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 54B043BC \
  && apt-get update \
  && apt-get install --no-install-recommends -y cloudinsight-agent="${AGENT_VERSION}" \
+ && apt-get install -y openjdk-7-jre-headless -qq --no-install-recommends \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

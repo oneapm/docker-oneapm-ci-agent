@@ -6,7 +6,8 @@ ENV AGENT_VERSION 1:4.7.3-1
 
 # Install the Agent
 RUN echo "deb http://apt.oneapm.com/ stable main" > /etc/apt/sources.list.d/cloudinsight-agent.list \
- && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 54B043BC \
+ && apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 62C7DA6D \
+ && apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 B421195B \
  && apt-get update \
  && apt-get install --no-install-recommends -y cloudinsight-agent="${AGENT_VERSION}" \
  && apt-get clean \
